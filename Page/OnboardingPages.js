@@ -7,6 +7,8 @@ import meetFriends from "../Assets/meet-friends.png"
 import keepUpdated from "../Assets/keep-updated.png"
 import profile from "../Assets/profile.png"
 import completed from "../Assets/completed.png"
+import { Actions } from "react-native-router-flux"
+import {StackActions, NavigationActions} from "react-navigation"
 
 const win = Dimensions.get('window')
 const styles=StyleSheet.create({
@@ -16,7 +18,11 @@ const styles=StyleSheet.create({
     }
 })
 
-const OnboardingPage : () => React$Node = () => {
+const OnboardingPage : () => React$Node = (props) => {
+    const goToHome = () => {
+        Actions.push("home", {firsttime : true})
+    }
+
     let pages = [
         {backgroundColor: "#FFFFFF", image:<Image style={styles.images} resizeMode="contain" source={welcomeImage}/>,title: "Welcome", subtitle: "SPE Apps is application for alumnee of Energy Generation System EEPIS"},
         {backgroundColor: "#FFFFFF", image:<Image style={styles.images} resizeMode="contain" source={meetFriends}/>,title: "Meet Your Friends", subtitle: "Find your friends and other alumnee"},
@@ -25,7 +31,7 @@ const OnboardingPage : () => React$Node = () => {
         {backgroundColor: "#FFFFFF", image:<Image style={styles.images} resizeMode="contain" source={completed}/>,title: "You're Good to Go", subtitle: "Explore SPE Apps as much as you like"},
     ]
     return(
-        <Onboarding pages={pages} />
+        <Onboarding pages={pages} onSkip={goToHome} onDone={goToHome}/>
     )
 }
 
