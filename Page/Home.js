@@ -5,17 +5,19 @@ import {
     View,
     Image
 } from "react-native"
-
-import Icon from "react-native-vector-icons/MaterialIcons"
-import splashScreenLogo from "../Assets/splash-screen-logo.png"
 import {Actions} from "react-native-router-flux"
 import {BottomNavigation, Text} from "react-native-paper"
 
+import FriendsFragment from "./HomeFragment/FriendsFragment"
+import NotificationsFragment from "./HomeFragment/NotificationsFragment"
+import color from "../Variable/Color"
 
 const HomeRoute = () => <Text>Home</Text>
 const ProfileRoute = () => <Text>Profile</Text>
-const FriendsRoute = () => <Text>Friends</Text>
-const NotificationRoute = () => <Text>Notifications</Text>
+const FriendsRoute = () => <FriendsFragment/>
+const NotificationRoute = () => <NotificationsFragment/>
+// const FriendsRoute = () => <Text>Profile</Text>
+// const NotificationRoute = () => <Text>Profile</Text>
 
 const styles = StyleSheet.create({
     mainview : {
@@ -56,10 +58,10 @@ const Home : () => React$Node = (props) => {
     }
 
     let navigationState = [
-        {key: "home", title : "Home", icon :"home"},
-        {key: "friends", title : "Friends", icon :"account-group"},
-        {key: "notification", title : "Notifications", icon :"bell"},
-        {key: "profile", title : "Profile", icon :"face-profile"}
+        {key: "home", title : "Home", icon :"home", color: color.hometabcolor},
+        {key: "friends", title : "Connections", icon :"account-group", color: color.friendstabcolor},
+        {key: "notification", title : "Notifications", icon :"bell", color : color.notificationtabcolor},
+        {key: "profile", title : "Profile", icon :"face-profile", color: color.profiletabcolor}
     ]
 
     let renderScene = BottomNavigation.SceneMap({

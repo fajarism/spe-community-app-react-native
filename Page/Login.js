@@ -155,7 +155,8 @@ const Login : () => React$Node = () => {
                 </View>
                 
                 <Button title="Login" buttonStyle={styles.logininput} 
-                    raised={true} disabled={isloginbuttondisabled}
+                    raised={true} 
+                    // disabled={isloginbuttondisabled}
                     loading={isloading}
                     onPress={() => (doLogin())}/>
 
