@@ -10,10 +10,11 @@ import {BottomNavigation, Text} from "react-native-paper"
 
 import FriendsFragment from "./HomeFragment/FriendsFragment"
 import NotificationsFragment from "./HomeFragment/NotificationsFragment"
+import ProfileFragment from "./HomeFragment/ProfileFragment"
 import color from "../Variable/Color"
 
 const HomeRoute = () => <Text>Home</Text>
-const ProfileRoute = () => <Text>Profile</Text>
+const ProfileRoute = () => <ProfileFragment/>
 const FriendsRoute = () => <FriendsFragment/>
 const NotificationRoute = () => <NotificationsFragment/>
 // const FriendsRoute = () => <Text>Profile</Text>
