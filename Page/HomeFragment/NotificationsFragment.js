@@ -3,7 +3,8 @@ import {
     Text, 
     StyleSheet,
     View,
-    FlatList
+    FlatList,
+    SafeAreaView
 } from 'react-native'
 
 import { ListItem } from 'react-native-elements'
@@ -69,13 +70,16 @@ const NotificationsFragment : () => React$Node = (props) => {
         </View>}/>)
     }
     return(
-        <View style={styles.mainview}>
+        <SafeAreaView>
+            <View style={styles.mainview}>
 
             <FlatList data={notificationsDummy} 
                 keyExtractor={(item, index) => item.id}
                 containerStyle={{backgroundColor:"#FAFAFA"}}
                 renderItem={renderItem}/>
         </View>
+
+        </SafeAreaView>
     )
 }
 

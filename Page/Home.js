@@ -1,9 +1,11 @@
+/* eslint-disable */
 import React, {Component, useState} from "react"
 import {
     StyleSheet,
     StatusBar,
     View,
-    Image
+    Image,
+    SafeAreaView
 } from "react-native"
 import {Actions} from "react-native-router-flux"
 import {BottomNavigation, Text} from "react-native-paper"
@@ -12,8 +14,9 @@ import FriendsFragment from "./HomeFragment/FriendsFragment"
 import NotificationsFragment from "./HomeFragment/NotificationsFragment"
 import ProfileFragment from "./HomeFragment/ProfileFragment"
 import color from "../Variable/Color"
+import HomeFragment from "./HomeFragment/HomeFragment"
 
-const HomeRoute = () => <Text>Home</Text>
+const HomeRoute = () => <HomeFragment/>
 const ProfileRoute = () => <ProfileFragment/>
 const FriendsRoute = () => <FriendsFragment/>
 const NotificationRoute = () => <NotificationsFragment/>
@@ -32,23 +35,6 @@ const styles = StyleSheet.create({
         height:200
     }
 })
-
-// export default class SplashScreen extends Component {
-//     componentDidMount() {
-//         setTimeout(()=> {
-//             Actions.replace("login",{})
-//         }, SPLASH_SCREEN_DURATION)
-//     }
-
-//     render() {
-//         return(
-//             <View style={styles.mainview}>
-//                 <StatusBar barStyle="dark-content"/>
-//                 <Image source={splashScreenLogo} style={styles.splashscreenlogo}/>
-//             </View>
-//         )
-//     }
-// }
 
 const Home : () => React$Node = (props) => {
     const [iscleared, setCleared] = useState(false)

@@ -13,7 +13,7 @@ import OnboardingPage from './Page/OnboardingPages'
 const MainRouter = () => {
     return(
         <Router>
-            <Stack key="root">
+            <Stack key="root" initial="home">
                 <Scene key="splashScreen" component={SplashScreen} title="Splash Screen" hideNavBar={true} />
                 <Scene key="login" component={Login} title="Login" hideNavBar={true}/>
                 <Scene key="home" component={Home} title="Home" hideNavBar={true}/>

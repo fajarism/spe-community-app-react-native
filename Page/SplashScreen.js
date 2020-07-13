@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 
 const SplashScreen : () => React$Node = () => {
     setTimeout(()=> {
-        Actions.replace("login",{})
+        Actions.replace("home",{})
     }, SPLASH_SCREEN_DURATION)
 
     return(

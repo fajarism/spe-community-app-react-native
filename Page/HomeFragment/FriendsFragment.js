@@ -4,7 +4,8 @@ import {
     StyleSheet,
     View,
     FlatList,
-    SegmentedControlIOSBase
+    SegmentedControlIOSBase,
+    SafeAreaView
 } from 'react-native'
 
 import { SearchBar, ListItem } from 'react-native-elements'
@@ -69,27 +70,30 @@ const FriendsFragment : () => React$Node = (props) => {
         subtitle={item.shortbio}></ListItem>)
 
     return(
-        <View style={styles.mainview}>
-            <Text style={styles.title}>Connections</Text>
-            <Text style={styles.subtitle}>{`${friendsDummy.length} connections available`}</Text>
+        <SafeAreaView>
+            <View style={styles.mainview}>
+                <Text style={styles.title}>Connections</Text>
+                <Text style={styles.subtitle}>{`${friendsDummy.length} connections available`}</Text>
 
-            <SearchBar placeholder={`Search connection by name`} 
-                platform= "default"
-                value={searchText} 
-                onChangeText={onSearchBarChange} 
-                round={true} 
-                containerStyle={styles.searchbarcontainer}
-                inputContainerStyle={styles.inputcontainerstyle}
-                placeholderTextColor="#CACACA"
-                searchIcon={<Icon name="search" color="#FAFAFA" size={16}/>}
-                clearIcon={<Icon onPress={() => setsearchtext("")} name="clear" color="#FAFAFA" size={16}/>}
-                inputStyle={styles.inputstyle}/>
+                <SearchBar placeholder={`Search connection by name`} 
+                    platform= "default"
+                    value={searchText} 
+                    onChangeText={onSearchBarChange} 
+                    round={true} 
+                    containerStyle={styles.searchbarcontainer}
+                    inputContainerStyle={styles.inputcontainerstyle}
+                    placeholderTextColor="#CACACA"
+                    searchIcon={<Icon name="search" color="#FAFAFA" size={16}/>}
+                    clearIcon={<Icon onPress={() => setsearchtext("")} name="clear" color="#FAFAFA" size={16}/>}
+                    inputStyle={styles.inputstyle}/>
 
-            <FlatList data={isonsearchmode ? friendsDummy.filter(dummy => dummy.name.toLowerCase().includes(searchText.toLowerCase())) : friendsDummy}
-                keyExtractor={(item, index) => item.id}
-                containerStyle={{backgroundColor:"#FAFAFA"}}
-                renderItem={renderItem}/>
-        </View>
+                <FlatList data={isonsearchmode ? friendsDummy.filter(dummy => dummy.name.toLowerCase().includes(searchText.toLowerCase())) : friendsDummy}
+                    keyExtractor={(item, index) => item.id}
+                    containerStyle={{backgroundColor:"#FAFAFA"}}
+                    renderItem={renderItem}/>
+            </View>
+
+        </SafeAreaView>
     )
 }
 
