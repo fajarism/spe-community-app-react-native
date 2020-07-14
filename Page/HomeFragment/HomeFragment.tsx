@@ -7,6 +7,14 @@ import Icon from "react-native-vector-icons/FontAwesome5"
 import { TouchableOpacity } from "react-native-gesture-handler";
 import myPhoto from "../../Assets/self-profile.jpg"
 import WrapFlexRow from "../../Component/WrapFlexRow";
+import UserFeedsCard from "../../Component/UserFeedsCard";
+import AdminFeedsCard from "../../Component/AdminFeedsCard";
+import UserImageFeedsCard from "../../Component/UserImageFeedsCard";
+import { Actions } from 'react-native-router-flux'
+
+import userO1 from '../../Assets/user-01.jpg'
+import userO2 from '../../Assets/user-02.jpg'
+import feeds01 from '../../Assets/feeds-01.jpg'
 
 const HomeFragment = () => {
 
@@ -15,27 +23,15 @@ const HomeFragment = () => {
             <ScrollView style={styles.homecontainer}>
                 <FlexRow>
                     <Text style={styles.admintitle}>News From Admin</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => Actions.adminallpost({})}>
                         <Text style={styles.adminseeall}>View All</Text>
                     </TouchableOpacity>
                 </FlexRow>
-                <View style={styles.feedsbox}>
-                    <FlexColumn>
-                        <FlexRow>
-                            <Icon name="user-circle" size={48}/>
-                            <FlexColumn containerStyle={styles.adminfeedcontainer}> 
-                                <FlexRow>
-                                    <Icon name="star" solid color={color.primarycolor} size={16}
-                                        style={{marginRight : 4, alignSelf : "center"}}/>
-                                    <Text style={styles.adminnametext}>SPE Admin</Text>
-                                </FlexRow>
-                                <Text style={styles.admindate}>Today</Text>
-                            </FlexColumn> 
-                        </FlexRow>
-                        <Text style={styles.admincontent}>Hi, this is your beloved admin. We want to tell you that this apps is now ready to use. 
-                            Please feel free to contact us if you experience any error when using this apps.</Text>
-                    </FlexColumn>
-                </View>
+                <AdminFeedsCard
+                    date="Today"
+                    oncardpressed={() => console.log("Admin card pressed")}
+                    status="Hi, this is your beloved admin. We want to tell you that this apps is now ready to use. 
+                    Please feel free to contact us if you experience any error when using this apps."/>
 
                 <FlexColumn containerStyle={styles.feedcontainer}>
                     <Text style={styles.feedtitle}>Your Feeds</Text>
@@ -46,43 +42,49 @@ const HomeFragment = () => {
                         </FlexRow>
                     </TouchableOpacity>
 
-                    <View style={styles.feedsbox}>
-                        <FlexColumn>
-                            <FlexRow>
-                                <Image source={myPhoto} width={48} height={48} style={{
-                                    height : 48,
-                                    width : 48,
-                                    resizeMode : "cover",
-                                    borderRadius : 24
-                                }}/>
-                                <FlexColumn containerStyle={styles.adminfeedcontainer}> 
-                                    <FlexRow>
-                                        <Text style={styles.adminnametext}>You</Text>
-                                    </FlexRow>
-                                    <Text style={styles.admindate}>Today</Text>
-                                </FlexColumn> 
-                            </FlexRow>
-                            <Text style={styles.admincontent}>
-                                Doing a great project. As a software engineer, we thrive to deliver the best and state-of-the-art application just for you.
-                                Bravo team. Keep up the good work.
-                            </Text>
+                    <UserFeedsCard
+                        name="Alexandria Haney"
+                        date="today"
+                        status="Doing a great project. As a software engineer, we thrive to deliver the best and state-of-the-art application just for you.
+                        Bravo team. Keep up the good work."
+                        like={4}
+                        comment={10}
+                        onuserpressed={() => Actions.profile({})}
+                        oncommentpressed={() => Actions.postdetail({})}
+                        onlikepressed={() => console.log("Like pressed")}
+                        onlikeslistpressed = {() => Actions.likeslist({})}
+                        oncardpressed={() => Actions.postdetail({})}/>
 
-                            <Text>Sarah connor and 3 others like this</Text>
-                            <View style={styles.divider}></View>
+                    <UserFeedsCard
+                        name="Gina Huff"
+                        date="23h ago"
+                        status="Just finished a report paper. Don't forget to stretch your body and let your eyes rest for a bit.
+                        Our body is our investment, make sure that it has its time to rejuvenate"
+                        like={4}
+                        profilepicture={userO1}
+                        comment={10}
+                        onuserpressed={() => Actions.profile({})}
+                        oncommentpressed={() => Actions.postdetail({})}
+                        onlikepressed={() => console.log("Like pressed")}
+                        onlikeslistpressed = {() => Actions.likeslist({})}
+                        oncardpressed={() => Actions.postdetail({})}/>
 
-                            <FlexRow containerStyle={{marginTop : 16}}>
-                                <WrapFlexRow containerStyle={{marginRight : 16}}>
-                                    <Icon name="heart" solid size={16} color={color.primarycolor} style={{marginRight : 4}}/>
-                                    <Text>4 likes</Text>
-                                </WrapFlexRow>
-
-                                <WrapFlexRow>
-                                    <Icon name="comment" solid size={16} color={color.primarycolor} style={{marginRight : 4}}/>
-                                    <Text>10 comments</Text>
-                                </WrapFlexRow>
-                            </FlexRow>
-                        </FlexColumn>
-                    </View>
+                    <UserImageFeedsCard
+                        name="Monika Glass"
+                        date="1d ago"
+                        status="Invest on your tools. With good arsenal comes great productivity.
+                            Don't hesitate to buy good quality products if it could boost your productivity.
+                            Here are some of my tools to make a perfect handicraft"
+                        like={4}
+                        profilepicture={userO2}
+                        comment={10}
+                        imagecontent={feeds01}
+                        onuserpressed={() => Actions.profile({})}
+                        onimagepressed={() => Actions.imageviewer({image : feeds01})}
+                        oncommentpressed={() => Actions.postdetail({})}
+                        onlikepressed={() => console.log("Like pressed")}
+                        onlikeslistpressed = {() => Actions.likeslist({})}
+                        oncardpressed={() => Actions.postdetail({})}/>
 
                     {/* <View style={styles.feedsbox}>
                         <FlexColumn>

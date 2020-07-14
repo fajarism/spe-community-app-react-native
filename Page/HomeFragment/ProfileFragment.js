@@ -6,6 +6,8 @@ import Icon from "react-native-vector-icons/MaterialIcons"
 
 import selfProfile from "../../Assets/self-profile.jpg"
 import color from "../../Variable/Color"
+import { TouchableOpacity, TouchableHighlight } from "react-native-gesture-handler"
+import { Actions } from "react-native-router-flux"
 
 
 const win = Dimensions.get("window")
@@ -144,7 +146,9 @@ const ProfileFragment : () => React$Node = (props) => {
         <ScrollView style={styles.mainview}>
             <View style={styles.backgroundImage}/>
             <View style={styles.imagecontainer}>
-                <Image style={styles.profileimage} source={selfProfile}/>
+                <TouchableOpacity activeOpacity={0.8} onPress={() => Actions.imageviewer({image : selfProfile})}>
+                    <Image style={styles.profileimage} source={selfProfile}/>
+                </TouchableOpacity>
                 <Text style={styles.name}>Alexandria Haney</Text>
                 <Text style={styles.shortbio}>Software Developer at Telkom</Text>
 

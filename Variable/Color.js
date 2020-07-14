@@ -7,9 +7,10 @@ const color = {
     secondarycolor : "#62b527",
     materialblue : "#2089dc",
     black : "#0A0A0A",
-    box : "#EAEAEA",
+    box : "#F0F0F0",
     gray : "#4A4A4A",
     lightgray : "#AAAAAA",
+    divider : "#DADADA",
     white : "#FAFAFA"
 }
 
