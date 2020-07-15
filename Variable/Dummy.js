@@ -1,3 +1,4 @@
+/* eslint-disable */
 const friendsDummy = [
     {name:"Camden Cervantes", id:0 , shortbio:"Software Developer at Telkom"},
     {name:"Adnaan Figueroa", id:1 , shortbio:"Lecturer at SPE"},

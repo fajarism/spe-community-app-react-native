@@ -13,11 +13,12 @@ import {BottomNavigation, Text} from "react-native-paper"
 import FriendsFragment from "./HomeFragment/FriendsFragment"
 import NotificationsFragment from "./HomeFragment/NotificationsFragment"
 import ProfileFragment from "./HomeFragment/ProfileFragment"
+import ProfileSettingFragment from './HomeFragment/ProfileSettingFragment'
 import color from "../Variable/Color"
 import HomeFragment from "./HomeFragment/HomeFragment"
 
 const HomeRoute = () => <HomeFragment/>
-const ProfileRoute = () => <ProfileFragment/>
+const ProfileRoute = () => <ProfileSettingFragment/>
 const FriendsRoute = () => <FriendsFragment/>
 const NotificationRoute = () => <NotificationsFragment/>
 // const FriendsRoute = () => <Text>Profile</Text>
@@ -48,7 +49,7 @@ const Home : () => React$Node = (props) => {
         {key: "home", title : "Home", icon :"home", color: color.hometabcolor},
         {key: "friends", title : "Connections", icon :"account-group", color: color.friendstabcolor},
         {key: "notification", title : "Notifications", icon :"bell", color : color.notificationtabcolor},
-        {key: "profile", title : "Profile", icon :"face-profile", color: color.profiletabcolor}
+        {key: "profile", title : "Settings", icon :"face-profile", color: color.profiletabcolor}
     ]
 
     let renderScene = BottomNavigation.SceneMap({

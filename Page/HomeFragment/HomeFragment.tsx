@@ -15,6 +15,7 @@ import { Actions } from 'react-native-router-flux'
 import userO1 from '../../Assets/user-01.jpg'
 import userO2 from '../../Assets/user-02.jpg'
 import feeds01 from '../../Assets/feeds-01.jpg'
+import UserUpdateProfilePictureFeedsCard from "../../Component/UserUpdateProfilePictureFeedsCard";
 
 const HomeFragment = () => {
 
@@ -35,7 +36,7 @@ const HomeFragment = () => {
 
                 <FlexColumn containerStyle={styles.feedcontainer}>
                     <Text style={styles.feedtitle}>Your Feeds</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => Actions.postnewfeed({})}>
                         <FlexRow containerStyle={styles.createpostbuton}>
                             <Icon name="plus" size={16} color={color.white} style={{marginRight : 8, alignSelf : "center"}}/>
                             <Text style={styles.postnewfeedtext}>Post New Feed</Text>
@@ -86,23 +87,22 @@ const HomeFragment = () => {
                         onlikeslistpressed = {() => Actions.likeslist({})}
                         oncardpressed={() => Actions.postdetail({})}/>
 
-                    {/* <View style={styles.feedsbox}>
-                        <FlexColumn>
-                            <FlexRow>
-                                <Icon name="user-circle" size={48}/>
-                                <FlexColumn containerStyle={styles.adminfeedcontainer}> 
-                                    <FlexRow>
-                                        <Icon name="star" solid color={color.primarycolor} size={16}
-                                            style={{marginRight : 4, alignSelf : "center"}}/>
-                                        <Text style={styles.adminnametext}>SPE Admin</Text>
-                                    </FlexRow>
-                                    <Text style={styles.admindate}>Today</Text>
-                                </FlexColumn> 
-                            </FlexRow>
-                            <Text style={styles.admincontent}>Hi, this is your beloved admin. We want to tell you that this apps is now ready to use. 
-                                Please feel free to contact us if you experience any error when using this apps.</Text>
-                        </FlexColumn>
-                    </View> */}
+                    <UserUpdateProfilePictureFeedsCard
+                        name="Monika Glass"
+                        date="1d ago"
+                        status="Invest on your tools. With good arsenal comes great productivity.
+                            Don't hesitate to buy good quality products if it could boost your productivity.
+                            Here are some of my tools to make a perfect handicraft"
+                        like={4}
+                        profilepicture={userO2}
+                        comment={10}
+                        imagecontent={userO2}
+                        onuserpressed={() => Actions.profile({})}
+                        onimagepressed={() => Actions.imageviewer({image : userO2})}
+                        oncommentpressed={() => Actions.postdetail({})}
+                        onlikepressed={() => console.log("Like pressed")}
+                        onlikeslistpressed = {() => Actions.likeslist({})}
+                        oncardpressed={() => Actions.postdetail({})}/>
                 </FlexColumn>
             </ScrollView>
         </SafeAreaView>
