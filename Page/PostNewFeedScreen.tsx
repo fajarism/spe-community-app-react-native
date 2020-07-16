@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, ColorPropType, View, Image } from 'react-native'
+import ImagePicker from 'react-native-image-picker'
 import FlexColumn from '../Component/FlexColum'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import color from '../Variable/Color'
@@ -18,6 +19,32 @@ const PostNewFeedScreen = () => {
         Actions.pop()
     }
 
+    const onAttachImageButtonPressed = () => {
+        const imagePickerOptions = {
+            title : "Attach Image",
+            storageOptions : {
+                path : "images"
+            }
+        }
+
+        ImagePicker.showImagePicker(imagePickerOptions, (response) => {
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+              } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+              } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+              } else {
+                const source = { uri: response.uri };
+            
+                // You can also display the image using data:
+                // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+            
+                setImageList([response.uri])
+              }
+        });
+    }
+
     return(
         <SafeAreaView>
             <ScrollView style={styles.container}>
@@ -34,14 +61,14 @@ const PostNewFeedScreen = () => {
                         style={styles.feedtextinput}/>
 
                     { imageList.length > 0 ? <TouchableOpacity onPress={() => Actions.imageviewer({image : feed01})}>
-                            <Image source={feed01} style={styles.feedimagecontainer}/>
+                            <Image source={{uri : imageList[0]}} style={styles.feedimagecontainer}/>
                             <TouchableOpacity style={styles.feedimageclear} onPress={() => setImageList([])}>
                                 <Icon name="times" size={24} style={{alignSelf : "center"}} color={color.gray}/>
                             </TouchableOpacity>
                         </TouchableOpacity>: <View/>}
 
                     { imageList.length === 0 ?<FlexRow containerStyle={{marginVertical : 24}}>
-                        <TouchableOpacity style={{marginHorizontal : 4}} onPress={() => setImageList(["asd"])}>
+                        <TouchableOpacity style={{marginHorizontal : 4}} onPress={onAttachImageButtonPressed}>
                             <View style={styles.addimagebutton}>
                                 <Icon name="image" color={color.lightgray} size={36}/>
                             </View>

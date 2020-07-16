@@ -53,7 +53,7 @@ const ProfileSettingFragment = () => {
                 </FlexColumn>
 
                 <FlexColumn containerStyle={{marginTop : 36}}>
-                    <TouchableOpacity style={{marginVertical : 8}}>
+                    <TouchableOpacity style={{marginVertical : 8}} onPress={() => Actions.changepassword({})}>
                         <FlexRow>
                             <View style={styles.settingsicon}>
                                 <FAIcon name="lock" size={16} color={color.white}/>

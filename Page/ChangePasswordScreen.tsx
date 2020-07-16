@@ -6,34 +6,46 @@ import color from '../Variable/Color'
 import WrapFlexRow from '../Component/WrapFlexRow'
 import Icon from "react-native-vector-icons/FontAwesome5"
 
-const ProfileSettingChangeNameScreen = () => {
-    const [name, setName] = useState("Alexandria Haney")
-    const [shortBio, setShortBio] = useState("Software Developer at Telkom")
+const ChangePasswordScreen = () => {
+    const [oldPassword, setOldPassword] = useState("")
+    const [newPassword, setNewPassword] = useState("")
+    const [confirmNewPassword, setConfirmNewPassword] = useState("")
 
     return(
         <SafeAreaView>
             <ScrollView style={{height : "100%"}}>
                 <IconInputText
-                    inputTitle="Fullname"
+                    inputTitle="Old Password"
                     iconName="lock"
                     iconSize={24}
-                    placeholder="ex : Alexandria Haney"
+                    placeholder="Your old password"
                     containerStyle={{marginTop : 16}}
-                    inputText={name}
-                    onInputTextChange={(value) => setName(value)}/>
+                    inputText={oldPassword}
+                    onInputTextChange={(value) => setOldPassword(value)}
+                    password/>
 
                 <IconInputText
-                    inputTitle="Short Bio"
+                    inputTitle="New Password"
                     iconName="lock"
                     iconSize={24}
-                    placeholder="ex : Manager at Wika Gedung"
-                    inputText={shortBio}
-                    onInputTextChange={(value) => setShortBio(value)}/>
+                    placeholder="Your new password"
+                    inputText={newPassword}
+                    onInputTextChange={(value) => setNewPassword(value)}
+                    password/>
+
+                <IconInputText
+                    inputTitle="Confirm Password"
+                    iconName="lock"
+                    iconSize={24}
+                    placeholder="Confirm your new password"
+                    inputText={confirmNewPassword}
+                    onInputTextChange={(value) => setConfirmNewPassword(value)}
+                    password/>
 
                 <TouchableOpacity onPress={() => Actions.pop()} style={{marginRight : 24}}>
                     <WrapFlexRow containerStyle={styles.postnewfeedbuttoncontainer}>
-                        <Text style={styles.postnewfeedbuttontext}>Update</Text>
-                        <Icon name="chevron-right" size={16} color={color.white} style={{alignSelf : "center" }}/>
+                        <Text style={styles.postnewfeedbuttontext}>Change Password</Text>
+                        <Icon name="chevron-right" size={16} color={color.white}/>
                     </WrapFlexRow>
                 </TouchableOpacity>
             </ScrollView>
@@ -46,9 +58,8 @@ const styles = StyleSheet.create({
         backgroundColor : color.primarycolor,
         padding : 16,
         marginTop : 24,
-        paddingHorizontal : 24,
+        width : "50%",
         alignSelf : "flex-end",
-        justifyContent : "flex-end",
         borderRadius : 16
     },
 
@@ -60,4 +71,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default ProfileSettingChangeNameScreen
+export default ChangePasswordScreen

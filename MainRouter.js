@@ -17,6 +17,7 @@ import LikesListScreen from './Page/LikesListScreen'
 import PostNewFeedScreen from './Page/PostNewFeedScreen'
 import UserProfile from './Page/HomeFragment/UserProfile'
 import ProfileSettingChangeNameScreen from './Page/ProfileSettingChangeNameScreen'
+import ChangePasswordScreen from './Page/ChangePasswordScreen'
 
 const MainRouter = () => {
     return(
@@ -28,6 +29,7 @@ const MainRouter = () => {
                 <Scene key="profile" component={UserProfile} title="Profile" hideNavBar={false}/>
                 <Scene key="profilechangename" component={ProfileSettingChangeNameScreen} title="Update Profile" hideNavBar={false}/>
                 <Scene key="adminallpost" component={AdminAllPosts} title="News From Admin" hideNavBar={false}/>
+                <Scene key="changepassword" component={ChangePasswordScreen} title="Change Password" hideNavBar={false}/>
                 <Scene key="postdetail" component={PostDetail} title="Post" hideNavBar={false}/>
                 <Scene key="likeslist" component={LikesListScreen} title="Likes" hideNavBar={false}/>
                 <Scene key="imageviewer" component={ImageViewerScreen} title="Image" hideNavBar={false}/>

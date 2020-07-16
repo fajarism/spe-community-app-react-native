@@ -81,7 +81,7 @@ const HomeFragment = () => {
                         comment={10}
                         imagecontent={feeds01}
                         onuserpressed={() => Actions.profile({})}
-                        onimagepressed={() => Actions.imageviewer({image : feeds01})}
+                        onimagepressed={() => Actions.imageviewer({image : feeds01, title : "Monika Glass"})}
                         oncommentpressed={() => Actions.postdetail({})}
                         onlikepressed={() => console.log("Like pressed")}
                         onlikeslistpressed = {() => Actions.likeslist({})}
@@ -98,7 +98,7 @@ const HomeFragment = () => {
                         comment={10}
                         imagecontent={userO2}
                         onuserpressed={() => Actions.profile({})}
-                        onimagepressed={() => Actions.imageviewer({image : userO2})}
+                        onimagepressed={() => Actions.imageviewer({image : userO2, viewtype : 0, title : "Monika Glass' Profile Picture"})}
                         oncommentpressed={() => Actions.postdetail({})}
                         onlikepressed={() => console.log("Like pressed")}
                         onlikeslistpressed = {() => Actions.likeslist({})}
