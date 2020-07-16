@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {View, Image, StyleSheet, Dimensions, ScrollView, SafeAreaView} from "react-native"
+import {View, Image, StyleSheet, Dimensions, ScrollView, SafeAreaView, Linking} from "react-native"
 import {Text} from "react-native-elements"
 import FAIcon from 'react-native-vector-icons/FontAwesome5'
 import Icon from "react-native-vector-icons/MaterialIcons"
@@ -21,6 +21,12 @@ const ProfileSettingFragment = () => {
         
         // Logout here
         Actions.login({})
+    }
+
+    const onContactUsClicked = () => {
+        let subject = `Questions about SPE App`
+        let body = `Dear Admin. I'm ${'Alexandria Haney'}, I have question about SPE App.`
+        Linking.openURL(`mailto:support@example.com?subject=${encodeURI(subject)}&body=${encodeURI(body)}`)
     }
 
     return(
@@ -63,7 +69,7 @@ const ProfileSettingFragment = () => {
                         </FlexRow>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={{marginVertical : 8}}>
+                    <TouchableOpacity style={{marginVertical : 8}} onPress={onContactUsClicked}>
                         <FlexRow>
                             <View style={styles.settingsicon}>
                                 <FAIcon name="question-circle" solid size={16} color={color.white}/>
